@@ -1,0 +1,28 @@
+---
+title: "Proventos"
+format: html
+editor: visual
+---
+
+
+```{r}
+source("proventos.r")
+```
+
+
+```{r}
+proventos_function("VALE3")
+```
+
+```{r}
+proventos_function("ITSA4") %>% 
+    ggplot(aes(x =  `Mês`, y = Valor, fill = Tipo)) +
+    geom_bar(stat = "identity") +
+    scale_y_continuous(name = "Valor por 1 ação (R$)") +
+    scale_fill_viridis_d(option = "B") +
+    labs(x = "", fill = "") +
+    theme_test() +
+    theme(axis.text.x = element_text(angle = 90),
+          legend.position = "bottom")
+```
+

@@ -57,10 +57,12 @@ dat |>
   filter(!is.na(`DESCONTO GRAHAM %`)) |> 
   filter(!is.na(`LIQUIDEZ MEDIA DIARIA`)) |> 
   filter(`LIQUIDEZ MEDIA DIARIA` > 1000000) |> 
-  arrange(desc(`DESCONTO GRAHAM %`))
+#  arrange(desc(`DESCONTO GRAHAM %`)) 
+  mutate(desconto = if_else(VPA > PRECO, "yes", "no")) |> 
+  filter(desconto == "yes")
 ```
 
-
+3086472-9
 
 
 

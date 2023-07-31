@@ -4,19 +4,19 @@ format: html
 editor: visual
 ---
 
+```{r}
+library("tidyverse")
+```
 
 ```{r}
 source("proventos.r")
 ```
 
-
 ```{r}
-proventos_function("VALE3")
-```
-
-```{r}
-proventos_function("ITSA4") %>% 
-    ggplot(aes(x =  `Mês`, y = Valor, fill = Tipo)) +
+proventos_function("CMIG4") |> 
+    mutate(year_com = lubridate::year(data_com)) |> 
+#    filter(year_com == 2022) |> 
+    ggplot(aes(x =  `Mês`, y = Valor, fill = factor(year_com))) +
     geom_bar(stat = "identity") +
     scale_y_continuous(name = "Valor por 1 ação (R$)") +
     scale_fill_viridis_d(option = "B") +
@@ -25,4 +25,3 @@ proventos_function("ITSA4") %>%
     theme(axis.text.x = element_text(angle = 90),
           legend.position = "bottom")
 ```
-

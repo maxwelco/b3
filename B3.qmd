@@ -7,8 +7,8 @@ editor: visual
 ```{r}
 library(RCurl)
 library(utils)
+library(tidyverse)
 ```
-
 
 ```{r}
 # download status invest
@@ -59,13 +59,6 @@ dat |>
   filter(`LIQUIDEZ MEDIA DIARIA` > 1000000) |> 
 #  arrange(desc(`DESCONTO GRAHAM %`)) 
   mutate(desconto = if_else(VPA > PRECO, "yes", "no")) |> 
-  filter(desconto == "yes")
+#  filter(desconto == "yes")
+  arrange(`P/VP`)
 ```
-
-3086472-9
-
-
-
-
-
-
